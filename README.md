@@ -1,1 +1,1 @@
-# 34_5-1 Ultra Nation load counrries data using useEffect
+# 34_5-2 display loaded data in a simple way
