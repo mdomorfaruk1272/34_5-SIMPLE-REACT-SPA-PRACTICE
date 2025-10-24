@@ -1,1 +1,1 @@
-# 34_5-2 display loaded data in a simple way
+# 34_5-3 create child component and pass data

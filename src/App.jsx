@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import Country from './components/Country/Country';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -10,22 +11,17 @@ function App() {
     fetch('https://restcountries.com/v3.1/independent?status=true')
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       setCountries(data);
-      const names = dta.maap(country => <li>{country.name}</li>);
-      console.log('name ', names);
     })
-    .catch(error => console.log('error ',error))
+    .catch(error => console.log('error: ',error))
   }, []);
   return (
     <>
       <div>
       <h1>Country Loaded: {countries.length}</h1>
-      <ol>
         {
-          countries.map(country => <li>{country.name.common}</li>)
+          countries.map(country => <Country key={Math.random()} name={country.name.common}></Country>)
         }
-      </ol>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
