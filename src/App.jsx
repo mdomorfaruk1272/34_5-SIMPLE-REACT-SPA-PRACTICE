@@ -3,10 +3,11 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Country from './components/Country/Country';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [countries, setCountries] = useState([]);
-  const [selected, setSelected] = useState({});
+  const [cart, setCart] = useState([]);
 
   useEffect(()=>{
     fetch('https://restcountries.com/v3.1/independent?status=true')
@@ -23,14 +24,16 @@ function App() {
   }, []);
 
    const handleAddCountry = (country) => {
-        console.log(country);
+       const newCart = [...cart, country];
+       setCart(newCart);
     }
 
   return (
     <>
       <div>
       <h1>Country Loaded: {countries.length}</h1>
-      <h4>Country added: </h4>
+      <h4>Country added: {cart.length}</h4>
+      <Cart cart={cart}></Cart>
         {
           countries.map(country => <Country key={country.name.common} country={country} handleAddCountry={handleAddCountry}></Country>)
         }

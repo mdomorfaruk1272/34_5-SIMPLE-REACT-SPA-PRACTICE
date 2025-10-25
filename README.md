@@ -1,1 +1,1 @@
-# 34_5-5 how to add shared eventhandler
+# 34_5-6 Create shopping cart and use array reduce
