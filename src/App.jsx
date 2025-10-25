@@ -6,6 +6,7 @@ import Country from './components/Country/Country';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [selected, setSelected] = useState({});
 
   useEffect(()=>{
     fetch('https://restcountries.com/v3.1/independent?status=true')
@@ -20,12 +21,18 @@ function App() {
     })
     .catch(error => console.log('error: ',error))
   }, []);
+
+   const handleAddCountry = (country) => {
+        console.log(country);
+    }
+
   return (
     <>
       <div>
       <h1>Country Loaded: {countries.length}</h1>
+      <h4>Country added: </h4>
         {
-          countries.map(country => <Country key={country.name.common} country={country}></Country>)
+          countries.map(country => <Country key={country.name.common} country={country} handleAddCountry={handleAddCountry}></Country>)
         }
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
