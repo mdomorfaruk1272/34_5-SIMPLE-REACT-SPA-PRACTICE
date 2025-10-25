@@ -1,1 +1,1 @@
-# 34_5-3 create child component and pass data
+# 34_5-4 pass multiple data to a child component
