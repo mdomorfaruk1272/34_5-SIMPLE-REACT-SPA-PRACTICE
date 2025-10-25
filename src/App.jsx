@@ -10,7 +10,14 @@ function App() {
   useEffect(()=>{
     fetch('https://restcountries.com/v3.1/independent?status=true')
     .then(res => res.json())
-    .then(data => setCountries(data) )
+    .then(data => {
+      fetch('https://restcountries.com/v3.1/independent?status=false')
+      .then(res => res.json())
+      .then(data2 => {
+        setCountries([...data, ...data2]);
+      })
+      .catch(error => console.log('error2 ', error))
+    })
     .catch(error => console.log('error: ',error))
   }, []);
   return (
